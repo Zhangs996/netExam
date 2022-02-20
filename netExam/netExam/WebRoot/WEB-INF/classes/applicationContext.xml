@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<!-- 学生bean -->
+	<bean id="studentdao" class="dao.StudentDao" scope="prototype"/>
+	<!-- StudentDao注入StudentAction -->
+	<bean id="StudentAction" class="action.StudentAction" scope="prototype">
+		<property name="studentdao" ref="studentdao"/>
+	</bean>
+	
+	<!-- 管理员bean -->
+	<bean id="managerdao" class="dao.ManagerDao" scope="prototype"/>
+	<!-- ManagerDao注入ManagerAction -->
+	<bean id="ManagerAction" class="action.ManagerAction" scope="prototype">
+		<property name="managerdao" ref="managerdao"/>	
+	</bean>
+	
+	<!-- 考试bean -->
+	<bean id="examdao" class="dao.ExamDao" scope="singleton"/>
+	<!-- ExamDao注入ExamAction -->
+	<bean id="ExamAction" class="action.ExamAction" scope="prototype">
+		<property name="examdao" ref="examdao"/>	
+	</bean>
+	
+	<!-- 学生成绩bean -->
+	<bean id="sturesultdao" class="dao.StuResultDao" scope="singleton"/>
+	<!-- ExamDao注入ExamAction -->
+	<bean id="StuResultAction" class="action.StuResultAction" scope="prototype">
+		<property name="sturesultdao" ref="sturesultdao"/>	
+	</bean>
+	
+	<!-- 判断题bean -->
+	<bean id="judgedao" class="dao.JudgeDao" scope="singleton"/>
+	<!-- JudgeDao注入JudgeAction -->
+	<bean id="JudgeAction" class="action.JudgeAction" scope="prototype">
+		<property name="judgedao" ref="judgedao"/>	
+	</bean>
+
+	<!-- 选择题bean -->
+	<bean id="questiondao" class="dao.QuestionDao" scope="singleton"/>
+	<!-- QuestionDao注入QuestionAction -->
+	<bean id="QuestionAction" class="action.QuestionAction" scope="prototype">
+		<property name="questiondao" ref="questiondao"/>	
+	</bean>
+	
+	<!-- 课程bean -->
+	<bean id="lessondao" class="dao.LessonDao" scope="singleton"/>
+	<!-- ExamDao注入ExamAction -->
+	<bean id="LessonAction" class="action.LessonAction" scope="prototype">
+		<property name="lessondao" ref="lessondao"/>	
+	</bean>
+	
+	<!-- 进入考试bean -->
+	<bean id="enterExamDao" class="dao.EnterExamDao" scope="prototype"/>
+	<!-- EnterExamDao注入StartExamAction -->
+	<bean id="StartExamAction" class="action.StartExamAction" scope="prototype">
+		<property name="enterExamDao" ref="enterExamDao"/>	
+	</bean>
+	
+</beans>

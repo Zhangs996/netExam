@@ -1,0 +1,40 @@
+.div-content {
+	border:1px solid #CFCFCF;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:10%;
+	margin-right:10%;
+	background:#ffffff;
+}
+
+hr {
+	width:100%;
+	border:1px solid #CFCFCF;
+	margin:0px;
+}
+
+.div-single,.div-more,.div-judge {
+	width:100%;
+	margin:0px;
+}
+
+.div-single-title,.div-more-title,.div-judge-title {
+	width:100%;
+	margin:0%;
+	background: #F0FFFF;
+	font-size:22px;
+	
+}
+
+.div-single-question,.div-more-question,.div-judge-question {
+	width:96%;
+	margin:0% 2% 0%;
+}
+
+table,tbody,tr,td {
+	width:100%;
+}
+
+td {
+	font-size:20px;
+}

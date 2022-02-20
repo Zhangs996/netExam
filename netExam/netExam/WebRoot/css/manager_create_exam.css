@@ -1,0 +1,53 @@
+.create_exam_content {
+	margin:0 0 20%;
+}
+
+.create_exam_content_title p{
+	/* 使用了 字体阴影，然后把字体颜色调成背景颜色，就是空心字了*/
+	text-align:center;
+    font-size: 50px;
+    text-shadow: 0 0 2px black;
+    color: #6495ED;
+}
+
+.create_exam_content_table {
+	margin:5% 0 0;
+	text-align:center;
+	overflow:hidden;
+}
+
+.create_exam_content_table table{
+	width:50%;
+	text-align:center;
+	border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #c0c0c0;
+}
+
+
+select {
+	width:60%;
+    height: 5%px;
+    margin-left: 5px;
+    font-size: 16px;
+    display: inline-block;
+    /* 这里是去除掉input的默认样式然后修改为自己的 */
+    background:none;
+    outline:none;
+    border:0px;
+    /* 这里是修改为自己的样式 */
+    border-bottom: 2px solid #dcdcdc;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    width:200px;
+    height:30px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: url("../img/sex-xiala.png") no-repeat 170px center;
+    background-size:10%;
+    font-size:16px;
+    font-family:Microsoft YaHei;
+    color:#666;
+    outline:none;
+}

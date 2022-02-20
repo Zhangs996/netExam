@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #c0c0c0;
+    width: 100%;
+}
+
+th,td {
+    border: 1px solid #d0d0d0;
+    color: #404060;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1a8cfe;
+    font-size: 16px ;
+    color: #fff;
+}
+
+td {
+    font-size: 14px;
+}
+
+tbody tr {
+    background-color: #f0f0f0;
+}
+
+tbody tr:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+}
+.text-center {
+    width: 100%;
+    background: #FFFFFF;
+}
+.pagination {
+    text-align: center;
+    overflow: hidden;
+    white-space:nowrap; /*处理块元素中的空白符和换行符的，这个属性保证图片不换行*/
+    margin-left: 4%;
+}
+.pagination li {
+    font-size: 17px;
+    list-style: none;
+    float: left; /*向左排列*/
+    margin-left: 6px;
+    margin-right: 4px;
+    width: 2%;
+}
+
+input[type="checkbox"]{
+
+    -webkit-appearance: none;
+
+    vertical-align:middle;
+
+    margin-top:0;
+
+    background:#fff;
+
+    border:#999 solid 1px;
+
+    border-radius: 3px;
+
+    min-height: 20px;
+
+    min-width: 20px;
+
+}
+
+input[type="checkbox"]:checked {
+
+    background: url("。。/img/选中.png");
+
+}
+.jmp input {
+    width:200px;
+    height: 40px;
+    margin-left: 5px;
+    font-size: 16px;
+    display: inline-block;
+    /* 这里是去除掉input的默认样式然后修改为自己的 */
+    background:none;
+    outline:none;
+    border:0px;
+    /* 这里是修改为自己的样式 */
+    border-bottom: 2px solid #dcdcdc;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+}

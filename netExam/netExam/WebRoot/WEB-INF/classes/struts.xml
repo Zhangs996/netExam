@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="json-default">
+	
+	
+	<interceptors>
+	
+		<!-- ExamInterceptor(创建考试题目数目校验) -->
+		<interceptor name="ExamInterceptor" class="interceptor.ExamInterceptor"/>
+		
+	</interceptors>
+	
+	
+	
+	
+	<!-- action配置 -->
+	<!-- student(学生) -->
+	
+	
+	<!-- student_login(学生登录) -->
+	<action name="student_login" class="StudentAction" method="student_login">
+		<result name="success" type="chain">
+			<param name="actionName">list_student_message</param>
+		</result>
+		<result name="error">/jsp/login.jsp</result>
+	</action>
+	
+	<!-- student_logout(学生退出登录) -->
+	<action name="student_logout" class="StudentAction" method="student_logout">
+		<result name = "success">/jsp/login.jsp</result>
+	</action>
+	
+	<!-- list_student_message(显示学生主页) -->
+	<action name="list_student_message" class="StudentAction" method="list_student_message">
+		<result name = "success">/jsp/student/student_entrance.jsp</result>
+	</action>
+	
+	<!-- list_student_message(显示学生主页) -->
+	<action name="list_student_message1" class="StudentAction" method="list_student_message">
+		<result name = "success">/jsp/student/student_home_page.jsp</result>
+	</action>
+	
+	
+	<!-- student_register(学生注册) -->
+	<action name="student_register" class="StudentAction" method="student_register">
+		<result name="success" type="chain">
+			<param name="actionName">register_success</param>
+		</result>
+		<result name="error">/jsp/register.jsp</result>
+	</action>
+	
+	<!-- register_success(学生注册成功，显示学生考号) -->
+	<action name="register_success" class="StudentAction" method="register_success">
+		<result name="success">/jsp/register_success.jsp</result>
+	</action>
+	
+	<!-- 找回密码  -->
+	<action name="getPassword" class="action.StudentAction" method="findPassword">
+		<result name="success">/jsp/forgetPassword_success.jsp</result>
+		<result name="error">/jsp/forgetPassword.jsp</result>
+	</action>
+	
+	<!-- 发送验证码  -->
+	<action name="sendVCode" class="action.StudentAction" method="sendVCode">
+		<result name="success" type="json">
+			<param name="noCache">true</param>
+			<param name="contentType">text/HTML</param>
+		</result>
+	</action>
+
+	<!-- search_grade(查询学生成绩) -->
+	<action name = "search_grade" class = "StudentAction" method = "studentresult">
+		<result name = "success">/jsp/student/search_grade.jsp</result>
+	</action>
+	
+	<!-- 提交反馈 -->
+	<action name = "feedback" class = "StudentAction" method = "save_feedback">
+		<result name = "success">/jsp/student/student_feedback.jsp</result>
+	</action>
+	
+	
+	<!-- search_grade(学生信息及修改) -->
+	<action name = "student_info" class = "StudentAction" method = "studentInfo">
+		<result name = "success">/jsp/student/student_infocenter.jsp</result>
+	</action>
+	<action name="student_update" class="StudentAction" method="studentupdate">
+		<result name = "success">/jsp/student/student_infocenter.jsp</result>
+	</action>
+	<action name="student_jump" class="StudentAction" method="studentJump">
+		<result name = "success">/jsp/student/student_infoupdate.jsp</result>
+	</action>
+	
+	
+	<!-- manager(管理员) -->
+	
+	
+	<!-- manager_login(管理员登录) -->
+	<action name="manager_login" class="ManagerAction" method="manager_login"> 
+		<result name="success" type="chain">
+			<param name="actionName">list_manager_message</param>
+		</result>
+		<result name="error">/jsp/manager_login.jsp</result>
+	</action>
+	
+	<!-- manager_logout(管理员退出登录) -->
+	<action name="manager_logout" class="ManagerAction" method="manager_logout">
+		<result name = "success">/jsp/manager_login.jsp</result>
+	</action>
+	
+	<!-- list_manager_message(显示管理员主页) -->
+	<action name="list_manager_message" class="ManagerAction" method="list_manager_message">
+		<result name = "success">/jsp/manager/manager_entrance.jsp</result>
+	</action>
+	
+	
+	<!-- exam(考试) -->
+	
+	<!-- create_exam(创建考试) -->
+	<action name="create_exam" class="ExamAction" method="create_exam">
+		<result name="success" type="redirect">manager_exam_message.servlet</result>
+		<result name="input">/jsp/manager/create_exam.jsp</result>
+		
+		<!-- 配置系统默认拦截器栈 -->
+		<interceptor-ref name="defaultStack"/>
+		<!-- 配置自定义拦截器 -->
+		<interceptor-ref name="ExamInterceptor"/>
+		
+	</action>
+	
+	<!-- list_select_course(列出可以创建考试的课程) -->
+	<action name="list_select_course" class="ExamAction" method="list_select_course">
+		<result name="success">/jsp/manager/create_exam.jsp</result>
+	</action>
+	
+	<!-- delete_exam(删除考试信息) -->
+	<action name="delete_exam" class="ExamAction" method="delete_exam">
+		<result name="success" type="redirect">manager_exam_message.servlet</result>
+	</action>
+	
+	<!-- delete_end_exam(删除结束考试信息) -->
+	<action name="delete_end_exam" class="ExamAction" method="delete_exam">
+		<result name="success" type="redirect">
+		<param name="location">manager_exam_message.servlet</param> 
+		 <param name="status">${status}</param>
+         <param name="to_page">${to_page}</param> 
+		</result>
+	</action>
+	
+	<!-- edit_exam_one(编辑考试信息-进入编辑界面) -->
+	<action name="edit_exam_one" class="ExamAction" method="edit_exam_one">
+		<result name="success">/jsp/manager/edit_exam.jsp</result>
+		
+	</action>
+	
+	<!-- edit_exam(编辑考试信息-修改数据库) -->
+	<action name="edit_exam" class="ExamAction" method="edit_exam">
+		<result name="success" type="redirect">manager_exam_message.servlet</result>
+		
+		<result name="input">/jsp/manager/edit_exam.jsp</result>
+		
+		<!-- 配置系统默认拦截器栈 -->
+		<interceptor-ref name="defaultStack"/>
+		<!-- 配置自定义拦截器 -->
+		<interceptor-ref name="ExamInterceptor"/>
+	</action>
+	
+	<!-- end_exam(终止考试) -->
+	<action name="end_exam" class="ExamAction" method="end_exam">
+		<result name="success" type="redirect">manager_exam_message.servlet</result>
+	</action>
+	
+	<!-- ends_exam(批量终止考试) -->
+	<action name="ends_exam" class="ExamAction" method="ends_exam">
+		<result name="success" type="redirect">manager_exam_message.servlet</result>
+	</action>
+	
+	<!-- restart_exam(重启考试) -->
+	<action name="restart_exam" class="ExamAction" method="restart_exam">
+		<result name="success" type="redirect">
+			<param name="location">manager_exam_message.servlet</param> 
+		 	<param name="status">${status}</param>
+         	<param name="to_page">${to_page}</param> 
+		</result>
+	</action>
+	
+	<!-- restarts_exam(批量重启考试) -->
+	<action name="restarts_exam" class="ExamAction" method="restarts_exam">
+		<result name="success" type="redirect">
+			<param name="location">manager_exam_message.servlet</param> 
+		 	<param name="status">${status}</param>
+         	<param name="to_page">${to_page}</param> 
+		</result>
+	</action>
+	
+	<!-- statistics_exam(统计考试情况) -->
+	<action name="statistics_exam" class="ExamAction" method="statistics_exam">
+		<result name="success" type="redirect">/jsp/manager/statistics_exam.jsp</result>
+	</action>
+	
+	<!-- start_exam(进入考试) -->
+	<action name="start_exam" class="StartExamAction" method="startExam">
+		<result name="success">jsp/student/student_start_exam.jsp</result>
+		
+	</action>
+	
+	<!-- sturesult_validation(校验学生是否进行过考试) -->
+	<action name="sturesult_validation" class="StartExamAction" method="sturesult_validation">
+		<result name="success" type="json">
+			<param name="noCache">true</param>
+			<param name="contentType">text/HTML</param>
+		</result>
+	</action>
+	
+	<!-- submit_exam(提交考试) -->
+	<action name="submit_exam" class="StartExamAction" method="submit_exam">
+		<result name="success" type="json">
+			<param name="noCache">true</param>
+			<param name="contentType">text/HTML</param>
+		</result>
+	</action>
+	
+	<!-- sturesult(成绩) -->
+	
+	<!-- analysis_grade(成绩分析) -->
+	<action name="analysis_grade" class="StuResultAction" method="analysis_grade">
+		<result name="success" >/jsp/manager/analysis_grade.jsp</result>
+	</action>
+	<!-- analysis_grade(成绩分析) -->
+	<action name="test" class="QuestionAction" method="test">
+		<result name="success" >/jsp/manager/analysis_grade.jsp</result>
+	</action>
+	
+	
+	<!-- optional_judge(判断题) -->
+	
+	<!-- delete_judge(删除试题信息) -->
+	<action name="delete_judge" class="JudgeAction" method="delete_judge">
+		<result name="success" type="redirect">manager_judge.servlet</result>
+	</action>
+	
+	<!-- create_judge(添加试题) -->
+	<action name="create_judge" class="JudgeAction" method="create_judge">
+		<result name="success" type="redirect">manager_judge.servlet</result>
+	</action>
+	
+	<!-- 批量添加判断题 -->
+	<action name="list_add_judge" class="JudgeAction" method="list_add_judge">
+		<result name="success" type="redirect">manager_judge.servlet</result>
+	</action>
+	
+	<!-- list_select_course(列出可以创建试题的课程) -->
+	<action name="list_select_course_for_judge" class="JudgeAction" method="list_select_course">
+		<result name="success">/jsp/manager/create_judge.jsp</result>
+	</action>
+	
+	<!-- edit_judge_one(编辑判断题信息-进入编辑界面) -->
+	<action name="edit_judge_one" class="JudgeAction" method="edit_judge_one">
+		<result name="success">/jsp/manager/edit_judge.jsp</result>
+	</action>
+	
+	<!-- edit_judge(编辑选择题信息-修改数据库) -->
+	<action name="edit_judge" class="JudgeAction" method="edit_judge">
+		<result name="success" type="redirect">manager_judge.servlet</result>
+	</action>
+	
+
+	
+	<!-- optional_question(选择题) -->
+	
+	<!-- delete_question(删除试题信息) -->
+	<action name="delete_question" class="QuestionAction" method="delete_question">
+		<result name="success" type="redirect">manager_question.servlet</result>
+	</action>
+	
+	<!-- create_question(添加试题) -->
+	<action name="create_question" class="QuestionAction" method="create_question">
+		<result name="success" type="redirect">manager_question.servlet</result>
+	</action>
+	
+	<!-- 批量添加选择题 -->
+	<action name="list_add_question" class="QuestionAction" method="list_add_question">
+		<result name="success" type="redirect">manager_question.servlet</result>
+	</action>
+	
+	<!-- list_select_course(列出可以创建试题的课程) -->
+	<action name="list_select_course_for_question" class="QuestionAction" method="list_select_course">
+		<result name="success">/jsp/manager/create_question.jsp</result>
+	</action>
+	
+	<!-- edit_question_one(编辑选择题信息-进入编辑界面) -->
+	<action name="edit_question_one" class="QuestionAction" method="edit_question_one">
+		<result name="success">/jsp/manager/edit_question.jsp</result>
+	</action>
+	
+	<!-- edit_question(编辑选择题信息-修改数据库) -->
+	<action name="edit_question" class="QuestionAction" method="edit_question">
+		<result name="success" type="redirect">manager_question.servlet</result>
+	</action>
+	
+	
+	<!-- lesson(课程) -->
+	
+	<!-- create_lesson(创建课程) -->
+	<action name="add_lesson" class="LessonAction" method="add_lesson">
+		<result name="success" type="redirect">manager_lesson_message.servlet</result>
+		<result name="error">/jsp/manager/manager_add_lesson.jsp</result>
+	</action>
+	<!-- delete_lesson(删除课程) -->
+	<action name="delete_lesson" class="LessonAction" method="delete_lesson">
+		<result name="success" type="redirect">manager_lesson_message.servlet</result>
+	</action>
+	
+	<!-- edit_lesson_one(编辑课程信息-进入编辑界面) -->
+	<action name="edit_lesson_one" class="LessonAction" method="edit_lesson_one">
+		<result name="success">/jsp/manager/edit_lesson.jsp</result>
+	</action>
+	
+	<!-- edit_lesson(编辑考试信息-修改数据库) -->
+	<action name="edit_lesson" class="LessonAction" method="edit_lesson">
+		<result name="success" type="redirect">manager_lesson_message.servlet</result>
+	</action>
+	
+	
+	<!-- suggest(反馈) -->
+	
+	<!-- delete_feedback(删除反馈) -->
+	<action name="delete_feedback" class="ManagerAction" method="delete_feedback">
+		<result name="success" type="redirect">manager_view_suggest.servlet</result>
+	</action>
+	
+	<!-- suggest_content -->
+	<action name="suggest_content" class="ManagerAction" method="suggest_content">
+		<result name="success" >/jsp/manager/feedback_content.jsp</result>
+	</action>
+	
+	<!-- test() -->
+	<action name="test" class="QuestionAction" method="test">
+		<result name="success"></result>
+	</action>
+	
+	
+	
+	
+	</package>
+	<constant name="struts.il8n.encoding" value="gb2312"></constant>
+	<constant name="struts.objectFactory" value="spring" />
+</struts>

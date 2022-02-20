@@ -1,0 +1,224 @@
+/*工具栏整体div样式*/
+.tool-wrap {
+    width:100%;
+    padding: 0 18px 0 30px;
+}
+/*工具栏内容div样式*/
+.tool-content-wrap {
+    width: 86%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+/*工具栏内容*/
+.tool-content {
+    width: 30%;
+    position: absolute;
+    top: 0;
+    left: -2%;
+}
+
+.tool-content-p {
+	font-size: 30px ;
+    color: #00BFFF;
+	letter-spacing: 0;
+	text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135
+}
+
+/*工具栏内容a标记*/
+
+/*工具栏内容button标记*/
+.tool-content button {
+    display: inline-block;
+    margin-bottom: 0px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4285;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/*删除按钮可用样式*/
+.delete-button-active {
+    cursor: pointer;
+    color: #F5FFFA;
+    width: 40%;
+    height: 70%;
+    background: #1A8CFE;
+    border-color:#1A8CFE;
+}
+/*删除按钮不可用样式*/
+.delete-button {
+    cursor: not-allowed;
+    color: #B4B6BD;
+    width: 40%;
+    height: 70%;
+    background: #BBFFFF;
+    border-color:#B4B6BD;
+    border-collapse: collapse;
+}
+
+/*搜索框div样式*/
+.tool-search {
+    width: 15%;
+    position: absolute;
+    top: 0;
+    right: -3%;
+}
+/*搜索框一般样式*/
+.tool-search-input{
+    width: 324px;
+    height: 40px;
+    padding: 0 50px 0 23px;
+    border: 1px solid #d8d8d8;
+    border-radius: 20px;
+}
+/*搜索框获得焦点样式*/
+.tool-search-active{
+    width: 324px;
+    height: 40px;
+    padding: 0 50px 0 23px;
+    border: 1px solid #1a8cfe;
+    border-radius: 20px;
+}
+/*i标记的伪样式*/
+.icon-p_top_search::before {
+    content: url("img/搜索框.png");
+}
+
+.search-section-icon {
+    font-size: 16px;
+    position: absolute;
+    top: 18%;
+    right: -30%;
+    line-height: inherit;
+    cursor: pointer;
+    color: #1a8cfe;
+}
+/*表格div样式*/
+.body-content {
+    padding-right: 15px;
+    position: absolute;
+    top:10%;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0;
+}
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #c0c0c0;
+    width: 100%;
+}
+
+th,td {
+	width:6%;
+    border: 1px solid #d0d0d0;
+    color: #404060;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1a8cfe;
+    font-size: 16px ;
+    color: #fff;
+}
+
+td {
+    font-size: 14px;
+}
+
+tbody tr {
+    background-color: #f0f0f0;
+}
+
+tbody tr:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+}
+.text-center {
+    width: 100%;
+    background: #FFFFFF;
+}
+.pagination {
+    text-align: center;
+    overflow: hidden;
+    white-space:nowrap; /*处理块元素中的空白符和换行符的，这个属性保证图片不换行*/
+    margin-left: 4%;
+}
+.pagination li {
+    font-size: 17px;
+    list-style: none;
+    float: left; /*向左排列*/
+    margin-left: 6px;
+    margin-right: 4px;
+    width: 2%;
+}
+
+input[type="checkbox"]{
+
+    -webkit-appearance: none;
+
+    vertical-align:middle;
+
+    margin-top:0;
+
+    background:#fff;
+
+    border:#999 solid 1px;
+
+    border-radius: 3px;
+
+    min-height: 20px;
+
+    min-width: 20px;
+
+}
+
+input[type="checkbox"]:checked {
+
+    background: url("。。/img/选中.png");
+
+}
+.jmp input {
+    width:200px;
+    height: 40px;
+    margin-left: 5px;
+    font-size: 16px;
+    display: inline-block;
+    /* 这里是去除掉input的默认样式然后修改为自己的 */
+    background:none;
+    outline:none;
+    border:0px;
+    /* 这里是修改为自己的样式 */
+    border-bottom: 2px solid #dcdcdc;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
+
+.active {
+	background:#00FFFF;
+}
